@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Product Detail</title>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+
+
+    <img src="{{pro_detail.image.url}}" style="height:100%;width:100%;"/>
+        </div>
+      <div class="col" style="padding-right:250px;">
+    <h5>Product:{{pro_detail.name}}</h5>
+    <h5 >Amount:{{pro_detail.price}}</h5>
+        <h5>Available stock:{{pro_detail.stock}}</h5>
+    <h5>Detail:{{pro_detail.desc}}</h5>
+        {% if user.is_superuser == True %}
+          {% if pro_detail.stock > 0 %}
+            <h3 class="text-success">Product in stock</h3>
+        <a style="text-decoration:none;" href="{% url 'admin:index' %}" class="btn-1">Add stock</a>
+        {% else %}
+         <h3 class="text-danger">Out of stock</h3>
+        <a style="text-decoration:none;" href="{% url 'admin:index' %}" class="btn-1">Add stock</a>
+        {% endif %}
+       {% else %}
+        {% if pro_detail.stock > 0 %}
+
+        <a style="text-decoration:none;font-size:20px;" href="{% url 'cart:addtocart' pro_detail.id %}" class="btn btn-primary">Add cart</a>
+        {% else %}
+         <h3 class="text-danger" style="font-size:20px;">Out of stock</h3>
+
+        {% endif %}
+
+       {% endif %}
+
+      </div>
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Payment</title>
+{% endblock %}
+{% block content %}
+<div>
+    {% if status  == True %}
+    <h2>Payment Success</h2>
+    {% else %}
+    <h2>Payment Failed</h2>
+    {% endif %}
+</div>
+{% endblock %}

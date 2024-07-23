@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Cartview</title>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+
+    <div class="row">
+        <h4 class="text-center">Shopping cart</h4>
+    <div class="col-sm-7 mb-3 mt-3 ">
+        <table class="table table-bordered border-danger">
+            <tr><th colspan="6" class="text-center" style="font-size:25px;"> Cart items</th></tr>
+            {% for i in cart %}
+            <tr>
+                <td><img src="{{i.product.image.url}}" height="150px" width="150px"></td>
+                <td><b>{{i.product.name}}</b></td>
+                <td><b>Product id:{{i.id}}</b></td>
+                <td><b>Quantity:{{i.quantity}}</b><br>
+                <b>Unit price:{{i.product.price}}</b></td>
+                <td><b>Subtotal:{{i.subtotal}}</b></td>
+                {% if i.product.stock > 0 %}
+                <td><a href="{% url 'cart:addtocart' i.product.id %}" style="color:black;"><i class="fa-solid fa-circle-plus"></i></a><br>
+                <a href="{% url 'cart:cartdecrement' i.product.id %}" style="color:black;"><i class="fa-sharp fa-solid fa-circle-minus"></i></a><br>
+                <a href="{% url 'cart:cartremove' i.product.id %}" style="color:black;"><i class="fa-solid fa-trash"></i></a></td>
+                {% else %}
+                <td>
+                <a href="{% url 'cart:cartdecrement' i.product.id %}" style="color:black;"><i class="fa-sharp fa-solid fa-circle-minus"></i></a><br>
+                <a href="{% url 'cart:cartremove' i.product.id %}" style="color:black;"><i class="fa-solid fa-trash"></i></a>
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+
+        </table>
+
+
+    </div>
+    <div class="col-sm-4  mb-3 mt-3">
+        <table class="table table-bordered  border-danger ">
+            <tr><th colspan="5" class="text-center" style="font-size:25px;"> Checkout</th></tr>
+            <tr>
+                <td><b>Total amount:{{total}}</b></td>
+            </tr>
+        </table>
+        <div class="container bg-danger border border-2 rounded-pill border-danger" style="height:35px;" >
+        <a href="{% url 'cart:placeorder' %}" style="text-decoration:none;position:relative;left:38%;top:10%;color:black;"><b>Place order</b></a>
+            </div>
+        <div class="container bg-danger border border-2 rounded-pill border-danger mt-3" style="height:35px;" >
+        <a href="{% url 'shop:allcategory' %}" style="text-decoration:none;position:relative;left:32%;top:10%;color:black;"><b>Continue Shopping</b></a>
+            </div>
+
+    </div>
+    </div>
+
+</div>
+{% endblock %}

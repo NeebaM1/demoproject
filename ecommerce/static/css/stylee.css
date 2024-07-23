@@ -1,0 +1,39 @@
+body{
+ background-color:aqua;
+}
+.navbar-light .navbar-toggler{
+color:#0390fc;
+
+}
+.navbar-light .navbar-nav .nav-link,.navbar-light .navbar-brand,.navbar-light .navbar-nav .nav-link.active {
+    color:rgb(252, 11, 3);
+    font-weight:bold;
+}
+.navbar-nav .nav-item:hover .nav-link {
+    color: black;
+}
+.bg-light
+{
+background-color:#0390fc !important
+}
+.x
+{
+color:red;
+font-size:20px;
+}
+.form-control
+{
+width:50%;
+}
+.border rounded-circle{
+border-radius:60% !important;
+}
+
+.border{
+border:red;
+}
+.dropdown-item{
+color:red;
+font-weight:bold;
+}
+
