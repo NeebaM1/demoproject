@@ -37,3 +37,23 @@ color:red;
 font-weight:bold;
 }
 
+#footer{
+
+    padding-top: 10px;
+    padding-bottom: 0px;
+    position:relative;
+    bottom:0;
+    width:100%;
+}
+
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+}
+
